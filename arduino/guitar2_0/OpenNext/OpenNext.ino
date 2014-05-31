@@ -31,7 +31,8 @@ void setup() {
   while (file.openNext(sd.vwd(), O_READ)) {
     file.getFilename(fileName);
     int i = 0;
-    while(fileName[i] != '.'){
+    while(fileName[i] != '.' && i != 9){
+      //Serial.println(i);
       i++;
     }
     if(fileName[i + 1] == 'P' && fileName[i + 2] == 'T' && fileName[i + 3] == 'B'){

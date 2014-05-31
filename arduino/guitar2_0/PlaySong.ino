@@ -1,4 +1,4 @@
-void playSong(unsigned char playBuffer[][7], int tempo, int length){
+void playSong(unsigned long playBuffer[], unsigned char lengthOfNote[], int tempo, int length){
   clearLEDs();
   delay(1000);
   fillLEDs();
@@ -10,27 +10,27 @@ void playSong(unsigned char playBuffer[][7], int tempo, int length){
   long nextMillis = millis();
   for(int i = 0; i != length; i++){
     //displayFingering(i);
-    Serial.print( playBuffer[i][1]);  
+    Serial.print( (int)((playBuffer[i] >> 25) & 31));  
     Serial.print(" ");
-    Serial.print( playBuffer[i][2]);  
+    Serial.print( (int)((playBuffer[i] >> 20) & 31));  
     Serial.print(" ");
-    Serial.print( playBuffer[i][3]);  
+    Serial.print( (int)((playBuffer[i] >> 15) & 31));  
     Serial.print(" ");
-    Serial.print( playBuffer[i][4]);  
+    Serial.print( (int)((playBuffer[i] >> 10) & 31));  
     Serial.print(" ");
-    Serial.print( playBuffer[i][5]);  
+    Serial.print( (int)((playBuffer[i] >> 5) & 31));  
     Serial.print(" ");
-    Serial.print( playBuffer[i][6]);  
+    Serial.print( (int)((playBuffer[i]) & 31));  
     Serial.println(" ");
 
-    data[0] = 1 << (int)playBuffer[i][1];
-    data[1] = 1 << (int)playBuffer[i][2];
-    data[2] = 1 << (int)playBuffer[i][3];
-    data[3] = 1 << (int)playBuffer[i][4];
-    data[4] = 1 << (int)playBuffer[i][5];
-    data[5] = 1 << (int)playBuffer[i][6];
+    data[5] = 1 << (int)((playBuffer[i] >> 25) & 31);
+    data[4] = 1 << (int)((playBuffer[i] >> 20) & 31);
+    data[3] = 1 << (int)((playBuffer[i] >> 15) & 31);
+    data[2] = 1 << (int)((playBuffer[i] >> 10) & 31);
+    data[1] = 1 << (int)((playBuffer[i] >>  5) & 31);
+    data[0] = 1 << (int)((playBuffer[i]) &       31);
 
-    nextMillis = nextMillis + (timeBase * playBuffer[i][0]);
+    nextMillis = nextMillis + (timeBase * lengthOfNote[i]);
     while(millis() <= nextMillis){
     } 
   }
