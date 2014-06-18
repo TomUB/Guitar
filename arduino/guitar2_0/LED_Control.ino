@@ -4,22 +4,24 @@ void updateBuffer(){
    c++;
    if(c == 6) c = 0;
     
-   digitalWriteFast(8, HIGH);
+   /*digitalWriteFast(8, HIGH);
    digitalWriteFast(9, HIGH);
    digitalWriteFast(4, HIGH);
    digitalWriteFast(5, HIGH);
    digitalWriteFast(6, HIGH);
-   digitalWriteFast(7, HIGH); 
+   digitalWriteFast(7, HIGH);*/ 
    
    digitalWriteFast(latchPin, 0);
-     
+   
+   shiftOutS(dataPin, clockPin, MSBFIRST, 0);
+   shiftOutS(dataPin, clockPin, MSBFIRST, (1 << c));  
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c] >> 16));
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c] >> 8));
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c]));
      
    digitalWriteFast(latchPin, 1);
  
-   digitalWriteFast(9-c, LOW);
+   //digitalWriteFast(9-c, LOW);
    
    timestamp = micros();
 }

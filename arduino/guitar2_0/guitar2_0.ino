@@ -10,18 +10,19 @@ SdFat sd;
 
 SdFile file;
 
-int dataPin = 3;
+int dataPin = 4;
 int latchPin = 2;
-int clockPin = 1;
+int clockPin = 3;
 
 unsigned long data[6]; // display buffer
+unsigned char stringBuffer = 0;
 
 //unsigned int pixel[6][[22] = 0;
 //double decay = decayAmount; 
 
 IntervalTimer updateLED;
 
-LiquidCrystal595 lcd(16, 15, 14);
+LiquidCrystal595 lcd(9, 7, 8);
 //ShiftLCD lcd(2, 4, 3);
 
 volatile long timestamp = micros();
@@ -29,10 +30,10 @@ long prevTimestamp = 0;
 
 const int buttons = 3;
 
-const int buttonPin1 = 17;
-const int buttonPin2 = 18;
-const int buttonPin3 = 19;
-const int buttonPin4 = 20;
+const int buttonPin1 = 14;
+const int buttonPin2 = 15;
+const int buttonPin3 = 16;
+const int buttonPin4 = 17;
 // Instantiate ClickButton objects in an array
 
 ClickButton button[4] = {
@@ -55,12 +56,12 @@ void setup(){
   pinMode(latchPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
   
-  pinMode(4, OUTPUT);
+  /*pinMode(4, OUTPUT);
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(9, OUTPUT);*/
   
   for (int i=0; i<buttons; i++)
   {
