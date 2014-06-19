@@ -14,7 +14,7 @@ void updateBuffer(){
    digitalWriteFast(latchPin, 0);
    
    shiftOutS(dataPin, clockPin, MSBFIRST, 0);
-   shiftOutS(dataPin, clockPin, MSBFIRST, (1 << c));  
+   shiftOutS(dataPin, clockPin, MSBFIRST, 8);  
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c] >> 16));
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c] >> 8));
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c]));

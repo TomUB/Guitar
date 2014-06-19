@@ -30,10 +30,10 @@ long prevTimestamp = 0;
 
 const int buttons = 3;
 
-const int buttonPin1 = 14;
-const int buttonPin2 = 15;
-const int buttonPin3 = 16;
-const int buttonPin4 = 17;
+const int buttonPin1 = 15;
+const int buttonPin2 = 16;
+const int buttonPin3 = 17;
+const int buttonPin4 = 18;
 // Instantiate ClickButton objects in an array
 
 ClickButton button[4] = {
@@ -44,6 +44,9 @@ ClickButton button[4] = {
 };
 
 void setup(){
+  
+  pinMode(20, OUTPUT);
+  digitalWrite(LOW);
   
   lcd.begin(16, 2);
   // Print a message to the LCD.
