@@ -14,13 +14,19 @@ void updateBuffer(){
    digitalWriteFast(latchPin, 0);
    
    shiftOutS(dataPin, clockPin, MSBFIRST, 0);
-   shiftOutS(dataPin, clockPin, MSBFIRST, 8);  
+   shiftOutS(dataPin, clockPin, MSBFIRST, (128>>c));  
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c] >> 16));
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c] >> 8));
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c]));
-     
+   
+   digitalWriteFast(20,HIGH);
+   delayMicroseconds(75);
+   
    digitalWriteFast(latchPin, 1);
  
+   delayMicroseconds(75);
+   digitalWriteFast(20,LOW);
+   
    //digitalWriteFast(9-c, LOW);
    
    timestamp = micros();

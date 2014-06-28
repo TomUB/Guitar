@@ -28,7 +28,7 @@ LiquidCrystal595 lcd(9, 7, 8);
 volatile long timestamp = micros();
 long prevTimestamp = 0;
 
-const int buttons = 3;
+const int buttons = 4;
 
 const int buttonPin1 = 15;
 const int buttonPin2 = 16;
@@ -46,7 +46,7 @@ ClickButton button[4] = {
 void setup(){
   
   pinMode(20, OUTPUT);
-  digitalWrite(LOW);
+  digitalWrite(20, LOW);
   
   lcd.begin(16, 2);
   // Print a message to the LCD.
