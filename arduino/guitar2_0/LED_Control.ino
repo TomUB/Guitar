@@ -20,11 +20,11 @@ void updateBuffer(){
    shiftOutS(dataPin, clockPin, MSBFIRST, (data[c]));
    
    digitalWriteFast(20,HIGH);
-   //delayMicroseconds(75);
+   delayMicroseconds(100);
    
    digitalWriteFast(latchPin, 1);
  
-   delayMicroseconds(75);
+   delayMicroseconds(100);
    digitalWriteFast(20,LOW);
    
    //digitalWriteFast(9-c, LOW);
