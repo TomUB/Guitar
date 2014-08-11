@@ -6,25 +6,25 @@ int buttonpress(){
  
   if (button[0].clicks != 0)
   {
-    buttonNumber = 1;
+    buttonNumber = 1;//right
   }
   button[1].Update();
   
   if (button[1].clicks != 0)
   {
-    buttonNumber = 2;
+    buttonNumber = 2;//down
   }
   button[2].Update();
   
   if (button[2].clicks != 0)
   {
-    buttonNumber = 3;
+    buttonNumber = 3;//left
   }
   button[3].Update();
   
   if (button[3].clicks != 0)
   {
-    buttonNumber = 4;
+    buttonNumber = 4;//up
   }
   
   return buttonNumber;
