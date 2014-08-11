@@ -260,9 +260,9 @@ void loop(){
     while(1) {
       if (changeKey)
         break;
-      int num = 4;
-      char* secondLine[4] = {
-        "Major","Minor","Major Seven","Minor Seven"};
+      const int num = 5;//number of chords
+      char* secondLine[num] = {
+        "Major","Minor","Major Seven","Minor Seven","Dominant Seven"};
       int buttonPressed = buttonpress(); 
       if (buttonPressed == 1) {
         chord++;
