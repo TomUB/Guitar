@@ -33,6 +33,11 @@ void playSong(unsigned long playBuffer[], unsigned char lengthOfNote[], int temp
     nextMillis = nextMillis + (timeBase * lengthOfNote[i]);
     while(millis() <= nextMillis){
     } 
+    
+     if (buttonpress() == 2) {
+       break;
+       clearLEDs();
+     }
   }
 }
 

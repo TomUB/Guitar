@@ -43,3 +43,12 @@ void rain(){
    }
    //thres += .1;
 }
+
+void playAnimation(int animation) {
+  if (animation == 0)
+    rain();
+  else if (animation == 1)
+    fillRandom();
+  else if (animation == 2)
+    toggleRandom();
+}

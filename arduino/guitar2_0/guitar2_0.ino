@@ -92,12 +92,13 @@ ClickButton button[4] = {
 
 void loop(){
   while (1) {
-    char* secondLine[3] = {
-      "Songs","Chords","Scales"    };
+    const int modes = 4;
+    char* secondLine[modes] = {
+      "Songs","Chords","Scales","Animations"};
     int buttonPressed = buttonpress(); 
     if (buttonPressed == 1) {
       mode++;
-      if (mode>2)
+      if (mode>modes-1)
         mode=0;
       lcd.clear();
       lcd.setCursor(0,0);
@@ -108,7 +109,7 @@ void loop(){
     if (buttonPressed == 3) {
       mode--;
       if (mode < 0)
-        mode = 2;
+        mode = modes-1;
       lcd.clear();
       lcd.setCursor(0,0);
       lcd.print("Choose Mode:");
@@ -399,8 +400,8 @@ void loop(){
     lcd.setCursor(0,1);
     lcd.print("Major");
     while(1) {
-      int num = 4;
-      char* secondLine[4] = {
+      const int num = 4;
+      char* secondLine[num] = {
         "Major","Minor","Major Pentatonic","Minor Pentatonic"};
       int buttonPressed = buttonpress(); 
       if (buttonPressed == 1) {
@@ -477,7 +478,61 @@ void loop(){
       if (buttonPressed == 2) {
         clearLEDs();
         lcd.clear();
-        mode = 3;
+        mode = 4;
+        break;
+      }
+    }
+  }
+  while (menu == 3) {//animations
+    int animation = 0;
+    boolean play = 0;
+    lcd.setCursor(0,0);
+    lcd.print("Choose Animation:");
+    lcd.setCursor(0,1);
+    lcd.print("Rain");
+    while(1) {
+      const int num = 3;
+      char* secondLine[num] = {
+        "Rain","Fill","Toggle"};
+      int buttonPressed = buttonpress(); 
+      if (buttonPressed == 1) {
+        animation++;
+        if (animation > num-1)
+          animation=0;
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("Choose Animation:");
+        lcd.setCursor(0,1);
+        lcd.print(secondLine[animation]);
+      }
+      if (buttonPressed == 3) {
+        animation--;
+        if (animation < 0)
+          animation= num - 1;
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("Choose Animation:");
+        lcd.setCursor(0,1);
+        lcd.print(secondLine[animation]);
+      }
+      if (buttonPressed == 4) {
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print(animation);
+        lcd.setCursor(0,1);
+        lcd.print("");
+        while (buttonpress() != 2)
+          playAnimation(animation);
+        clearLEDs();
+        break;
+      }
+      if (buttonPressed == 2) {
+        lcd.clear();
+        lcd.setCursor(0,0);
+        lcd.print("Choose Mode:");
+        lcd.setCursor(0,1);
+        lcd.print("Animations");
+        menu++;
         break;
       }
     }

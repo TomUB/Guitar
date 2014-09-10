@@ -8,9 +8,9 @@ int buttonpress(){
   {
     buttonNumber = 1;//right
   }
-  button[1].Update();
+  button[3].Update();
   
-  if (button[1].clicks != 0)
+  if (button[3].clicks != 0)
   {
     buttonNumber = 2;//down
   }
@@ -20,9 +20,9 @@ int buttonpress(){
   {
     buttonNumber = 3;//left
   }
-  button[3].Update();
+  button[1].Update();
   
-  if (button[3].clicks != 0)
+  if (button[1].clicks != 0)
   {
     buttonNumber = 4;//up
   }
